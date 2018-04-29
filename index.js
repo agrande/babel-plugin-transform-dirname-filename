@@ -38,7 +38,7 @@ module.exports = function (o) {
   return {
     visitor: {
       Program: function (prog, state) {
-        var filename = path.resolve(state.file.opts.filename);
+        var filename = path.relative(process.cwd(), path.resolve(state.file.opts.filename));
         var results = uses(prog, ['__dirname', '__filename']);
 
         if (results.__dirname) {
